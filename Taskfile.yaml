@@ -1,0 +1,39 @@
+version: '3'
+
+tasks:
+  build:
+    desc: "Build the project by running the build script"
+    cmds:
+      - chmod +x ./build.sh
+      - ./build.sh build_base
+  
+  submit:
+    desc: "Export the image for submission"
+    cmds:
+      - chmod +x ./export.sh
+      - ./export.sh
+  
+  test:
+    desc: "Run tests by executing docker image"
+    cmds:
+      - chmod +x ./test.sh
+      - ./test.sh
+  
+  local:
+    desc: "Run the local Python script process.py"
+    cmds:
+      - cd ./src
+      - python process.py
+      - cd ../
+  
+  init:
+    desc: "init requirements setup"
+    cmds: 
+      - pip install ultralytics
+      - pip install -q git+https://github.com/THU-MIG/yolov10.git
+      - pip install -U certifi==2023.7.22
+
+  model_move: 
+    desc: "move all model form train to submit"
+    cmds:
+      - cp -r ../train/output_model/* ./src/models/

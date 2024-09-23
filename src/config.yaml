@@ -1,0 +1,6 @@
+results_file_output_path: "surgical-tools.json"
+video_testing_path: "endoscopic-robotic-surgery-video.mp4"
+iou_score: 0.5
+model_folder: "models"  
+conf_score: 0.1
+# image_testing_path: "/home/niran/Documents/dataset/base_data/val_data"

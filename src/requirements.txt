@@ -1,0 +1,15 @@
+# [INIT] package
+evalutils==0.4.2
+# simpleitk
+
+# [OWN] package
+Pillow
+matplotlib
+pandas
+tenacity==8.3.0
+kaleido
+certifi==2023.7.22
+sentence-transformers
+pyyaml
+opencv-python
+dill
