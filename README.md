@@ -1,4 +1,4 @@
-# Docker image & algorithm submission for Category 1 of SurgToolLoc Challenge 2024
+# Docker image & model weight submission for Category 1 of SurgToolLoc Challenge 2024
 
 This repository has everything you and your team need to make an algorithm submission for the [SurgToolLoc Challenge](https://surgtoolloc.grand-challenge.org/) Category 2.
 
@@ -60,22 +60,59 @@ The output json file needs to be a dictionary containing the set of tools detect
 1. First, clone this repository:
 
 ```
-git clone https://github.com/aneeqzia-isi/surgtoolloc2022-category-2.git
+git clone https://github.com/khengyun/surgvu2024_submit.git
 ```
 
-2. Our `Dockerfile` should have everything you need, but you may change it to another base image/add your algorithm requirements if your algorithm requires it:
+2. Our `Dockerfile` should have everything you need, but you may change it to another base image/add your algorithm requirements if your algorithm requires it.
 
-![Alt text](README_files/dockerfile_instructions.png?raw=true "Flow")
 
-3. Edit `process.py` - this is the main step for adapting this repo for your model. This script will load your model and corresponding weights, perform inference on input videos one by one along with any required pre/post-processing, and return the predictions of surgical tool classification as a dictionary. The class Surgtoolloc_det contains the predict function. You should replace the dummy code in this function with the code for your inference algorihm. Use `__init__` to load your weights and/or perform any needed operation. We have added `TODO` on places which you would need to adapt for your model
+3. Add your trained model weights (e.g., `best.pt`) to the `src/models/` directory.
 
-4. Run `build.sh`  to build the container. 
+4. The `process.py` script is the main step for adapting this repository for your model. This script will load your model and corresponding weights, perform inference on input videos one by one along with any required pre/post-processing, and return the predictions of surgical tool classification as a dictionary. The class `Surgtoolloc_det` contains the `predict` function. You should replace the dummy code in this function with the code for your inference algorithm. Use `__init__` to load your weights and/or perform any needed operations. We have added `TODO` on the places you need to adapt for your model.
 
-5. In order to do local testing, you can edit and run `test.sh`. You will probably need to modify the script and parts of `process.py` to adapt for your local testing. The main thing that you can check is whether the output json being produced by your algorithm container at ./output/surgical-tools.json is similar to the sample json present in the main folder (also named surgical-tools.json).
+5. You can use the `taskfile` to manage different parts of the workflow easily. Below are the instructions for common operations:
 
- PLEASE NOTE: You will need to change the variable `execute_in_docker` to False while running directly locally. But will need to switch it back once you   are done testing, as the paths where data is kept and outputs are saved are modified based on this boolean. Be aware that the output of running test.sh, of course, initially may not be equal to the sample predictions we put there for our testing. Feel free to modify the test.sh based on your needs.
+   - **Initialize the environment**: Run the following to install dependencies, including `ultralytics` and `yolov10`:
+     ```
+     task init
+     ```
 
-5. Run `export.sh`. This script will will produce `surgtoolloc_det.tar.gz` (you can change the name of your container by modifying the script). This is the file to be used when uploading the algorithm to Grand Challenge.
+   - **Move the model to the submission directory**: Use this command to move your model from the training output directory to the `src/models/` folder:
+     ```
+     task model_move
+     ```
+
+   - **Build the Docker container**: To build the Docker container, run:
+     ```
+     task build
+     ```
+
+   - **Run local testing**: If you wish to run local tests, ensure your `test.sh` script is correctly configured and then execute:
+     ```
+     task test
+     ```
+
+   - **Run the Python script locally**: If you want to test the `process.py` script directly, use:
+     ```
+     task local
+     ```
+
+   - **Export the container for submission**: To create the `.tar.gz` file needed for submission to the Grand Challenge platform, execute:
+     ```
+     task submit
+     ```
+
+6. You can modify the `test.sh` script and parts of `process.py` to adapt for your local testing. The main check is whether the output JSON produced by your algorithm container in `./output/surgical-tools.json` is similar to the sample JSON in the repository (also named `surgical-tools.json`).
+
+7. Once you're satisfied with the results, run the export script to package your container for submission:
+    ```
+    task submit
+    ```
+
+
+8. Follow the steps outlined in the "Uploading your container to the grand-challenge platform" section to submit your container to the SurgToolLoc Challenge.
+
+
 
 ## Uploading your container to the grand-challenge platform
 

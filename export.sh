@@ -2,4 +2,4 @@
 
 ./build.sh
 
-docker save surgtoolloc_det:latest | gzip -c > surgtoolloc_det.tar.gz
+docker save surgtoolloc_det:latest | gzip -c > submit/surgtoolloc_det.tar.gz
