@@ -1,19 +1,13 @@
-# Docker image & model weight submission for Category 1 of SurgToolLoc Challenge 2024
+# Docker image & algorithm submission for Category 1 of SurgToolLoc Challenge 2024
 
-This repository has everything you and your team need to make an algorithm submission for the [SurgToolLoc Challenge](https://surgtoolloc.grand-challenge.org/) Category 2.
 
-Be sure that you have a verified account on Grand Challenge and are accepted as a participant in the SurgToolLoc challenge.
-You should be able to submit your Docker container/algorithm on the challenge website when the submission opens.
-
-Here are some useful documentation links for your submission process:
-- [Tutorial on how to make an algorithm container on Grand Challenge](https://grand-challenge.org/blogs/create-an-algorithm/)
-- [Docker documentation](https://docs.docker.com/)
-- [Evalutils documentation](https://evalutils.readthedocs.io/)
-- [Grand Challenge documentation](https://comic.github.io/grand-challenge.org/algorithms.html)
+- Weight: https://github.com/khengyun/surgvu2024_submit/blob/main/src/models/best.pt
+- Dataset: https://drive.google.com/file/d/1ZarrwoFOhYUudDZVV2OOTZcyU5F2DPVO
 
 ## Prerequisites
 
 You will need to have [Docker](https://docs.docker.com/) installed on your system. We recommend using Linux with a Docker installation. If you are on Windows, please use [WSL 2.0](https://docs.microsoft.com/en-us/windows/wsl/install).
+
 
 ## Prediction format
 
@@ -118,7 +112,7 @@ git clone https://github.com/khengyun/surgvu2024_submit.git
 
 1. Create a new algorithm [here](https://surgtoolloc.grand-challenge.org/evaluation/challenge/algorithms/create/). Fill in the fields as specified on the form.
 
-2. On the page of your new algorithm, go to `Containers` on the left menu and click `Upload a Container`. Now upload your `.tar.gz` file produced in step 5. 
+2. On the page of your new algorithm, go to `Containers` on the left menu and click `Upload a Container`. Now upload your `.tar.gz` file produced in step 7. 
 
 3. After the Docker container is marked as `Ready`, you may be temped to try out your own algorithm when clicking `Try-out Algorithm` on the page of your algorithm. But doing so will likely fail. WARNING: Using this container in `Try-out` will fail. You can still use the Try-out feature to check logs from the algorithm and ensure that processes are running but it will not pass. However, if built correctly and you see the expected logs from your algorithm, then the container should still work for the Prelim submission. 
 
