@@ -1,6 +1,5 @@
 # Docker image & algorithm submission for Category 1 of SurgToolLoc Challenge 2024
 - Weight: https://github.com/khengyun/surgvu2024_submit/blob/main/src/models/best.pt
-- Dataset: https://drive.google.com/file/d/1ZarrwoFOhYUudDZVV2OOTZcyU5F2DPVO
 
 ## Prerequisites
 You will need to have [Docker](https://docs.docker.com/) installed on your system. We recommend using Linux with a Docker installation. If you are on Windows, please use [WSL 2.0](https://docs.microsoft.com/en-us/windows/wsl/install).
