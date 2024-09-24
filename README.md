@@ -1,20 +1,14 @@
 # Docker image & algorithm submission for Category 1 of SurgToolLoc Challenge 2024
-
-
 - Weight: https://github.com/khengyun/surgvu2024_submit/blob/main/src/models/best.pt
 - Dataset: https://drive.google.com/file/d/1ZarrwoFOhYUudDZVV2OOTZcyU5F2DPVO
 
 ## Prerequisites
-
 You will need to have [Docker](https://docs.docker.com/) installed on your system. We recommend using Linux with a Docker installation. If you are on Windows, please use [WSL 2.0](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-
 ## Prediction format
-
 For category 1 of [SurgToolLoc Challenge](https://surgtoolloc.grand-challenge.org/) (surgical tool detection) the instructions to generate the Docker container are given below
 
 ### Category #1 – Surgical tool detection:  
-
 The output json file needs to be a dictionary containing the set of tools detected in each frame with its correspondent bounding box corners (x, y), again generating a single json file for each video like given below:  
 
 ```
@@ -47,7 +41,6 @@ The output json file needs to be a dictionary containing the set of tools detect
 ```
  Please note that the third value of each corner coordinate is not necessary for predictions but must be kept 0.5 always to comply with the Grand Challenge automated evaluation system (which was built to also consider datasets of 3D images). To standardize the submissions, the first corner is intended to be the top left corner of the bounding box, with the subsequent corners following the clockwise direction. The “type” and “version” entries are to comply with grand-challenge automated evaluation system. 
  **Please use the "probability" entry to include the confidence score for each detected bounding box.**
-
 
 ## Adapting the container to your algorithm
 
